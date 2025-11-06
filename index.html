@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seyahatname - Gezi Rehberi</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <style>
+    .city-card {
+      transition: transform 0.3s;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .city-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .rating-stars {
+      color: #ffc107;
+    }
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+      url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #0d6efd;
+    }
+    ul.ilce-listesi {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    .city-card img {
+  height: 200px; /* sabit yükseklik */
+  object-fit: cover; /* orantılı kırpma */
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="bi bi-journal-text"></i> Seyahatname</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Ana Sayfa</a></li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Şehir ara..." id="searchInput">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold">10 Şehir Gezi Rehberi</h1>
+      <p class="lead">Muğla, Burdur, Isparta, Antalya, Denizli, Mersin, Mardin, Urfa, Van, Aydın</p>
+    </div>
+  </div>
+
+  <!-- Şehirler -->
+  <div class="container mb-5">
+    <h3 class="section-title">Şehirlerimiz</h3>
+    <div class="row" id="citiesGrid">
+      <!-- 10 şehir kartı -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Muğla" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/marmaris.jpg" class="card-img-top" alt="Muğla">
+          <div class="card-body">
+            <h5 class="card-title">Muğla</h5>
+            <p class="card-text">Ege'nin incisi, denizi ve tarihiyle ünlü bir şehir.</p>
+            <span class="rating-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Burdur" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/ağlasun.jpg" class="card-img-top" alt="Burdur">
+          <div class="card-body">
+            <h5 class="card-title">Burdur</h5>
+            <p class="card-text">Salda Gölü’nün berrak suları ve doğal güzellikleriyle ünlüdür.</p>
+            <span class="rating-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Isparta" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/ısparta.jpg" class="card-img-top" alt="Isparta">
+          <div class="card-body">
+            <h5 class="card-title">Isparta</h5>
+            <p class="card-text">Gül kokulu şehir Isparta, lavanta tarlalarıyla meşhurdur.</p>
+            <span class="rating-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Antalya" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/antalya.jpg" class="card-img-top" alt="Antalya">
+          <div class="card-body">
+            <h5 class="card-title">Antalya</h5>
+            <p class="card-text">Türkiye'nin turizm başkenti, deniz ve tarih iç içe.</p>
+            <span class="rating-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Denizli" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/denizli.jpg" class="card-img-top" alt="Denizli">
+          <div class="card-body">
+            <h5 class="card-title">Denizli</h5>
+            <p class="card-text">Pamukkale travertenleriyle dünyaca ünlüdür.</p>
+            <span class="rating-stars">★★★★☆</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Mersin" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/mersin.jpg" class="card-img-top" alt="Mersin">
+          <div class="card-body">
+            <h5 class="card-title">Mersin</h5>
+            <p class="card-text">Akdeniz’in liman kenti, tantunisiyle meşhur.</p>
+            <span class="rating-stars">★★★☆☆</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Mardin" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/mardin.jpg" class="card-img-top" alt="Mardin">
+          <div class="card-body">
+            <h5 class="card-title">Mardin</h5>
+            <p class="card-text">Taş evleri ve kültürel mirasıyla büyüleyici bir şehir.</p>
+            <span class="rating-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Urfa" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/urfa.jpg" class="card-img-top" alt="Urfa">
+          <div class="card-body">
+            <h5 class="card-title">Urfa</h5>
+            <p class="card-text">Peygamberler şehri olarak bilinir, Balıklıgöl'ü meşhurdur.</p>
+            <span class="rating-stars">★★★★☆</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Van" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/van.jpg" class="card-img-top" alt="Van">
+          <div class="card-body">
+            <h5 class="card-title">Van</h5>
+            <p class="card-text">Van Gölü ve Akdamar Adası’yla tanınan doğu incisi.</p>
+            <span class="rating-stars">★★★★☆</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card city-card" data-city="Aydın" data-bs-toggle="modal" data-bs-target="#cityDetailModal">
+          <img src="img/aydın.jpg" class="card-img-top" alt="Aydın">
+          <div class="card-body">
+            <h5 class="card-title">Aydın</h5>
+            <p class="card-text">Efes ve Kuşadası ile tarih ve denizin buluştuğu yer.</p>
+            <span class="rating-stars">★★★★☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="cityDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailCityName">Şehir Detayı</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img id="images" src="" class="img-fluid rounded mb-3" alt="Şehir Resmi">
+          <p id="detailCityDescription" class="fs-5"></p>
+
+          <h6 class="mt-4">İlçeleri:</h6>
+          <ul id="ilceListesi" class="ilce-listesi"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Seyahatname. Hazırlayan: Hazal Bağı</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
